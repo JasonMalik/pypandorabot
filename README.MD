@@ -1,5 +1,5 @@
 # pypandorabot
-`pypandorabot` is a python module used in order to send and retrieve message from pandorabots.
+`pypandorabot` is a python API for [Pandorabots](http://www.pandorabots.com/)
 
 ### Requirements
 This code is written in python 2.7.
