@@ -3,7 +3,7 @@ import urllib
 import xmltodict
 
 '''
-If the bot is missing (wrond id) the server return status = 3
+If the bot is missing (wrong id) the server return status = 3
 '''
 class MissingBot(Exception):
      def __str__(self):
@@ -22,7 +22,7 @@ class Pandorabot:
 
     def talk(self,input):
 
-        params = {'botid': self.bot_id,'input': input}
+        input = self.toAscii(input)
 
         postData = urllib.urlencode({'botid': self.bot_id,'custid': self.cust_id, 'input': input} if self.cust_id else {'botid': self.bot_id,'input': input})
 
@@ -41,11 +41,19 @@ class Pandorabot:
         if(self.cust_id is None):
             self.cust_id = parsed['result']['@custid']
 
-        return parsed['result']['that']
+        return str(parsed['result']['that'])
 
     def getCustId(self):
         return self.cust_id
 
     def reset(self):
         self.cust_id = None
+
+    '''
+    UTF-8 characters cannot be processe by pandorabots, so i've to sanitize them
+    '''
+    @staticmethod
+    def toAscii(string):
+        stripped = (c for c in string if 0 < ord(c) < 127)
+        return ''.join(stripped)
 
