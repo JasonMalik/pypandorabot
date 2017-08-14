@@ -23,7 +23,7 @@ In this case a new session is created:
 bot_id = "f5d922d97e345aa1" #A.L.I.C.E.
 bot = pypandorabot.Pandorabot(bot)
 ```
-If the bot is missing (wrond id) a `MissingBot` exception is raised.
+If the bot is missing (wrong id) a `MissingBot` exception is raised.
 
 Message are sent using the talk(string) method:
 ```python
