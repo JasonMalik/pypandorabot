@@ -7,7 +7,7 @@ If the bot is missing (wrong id) the server return status = 3
 '''
 class MissingBot(Exception):
      def __str__(self):
-         return repr("The status returned code 3, the bot is missing")
+         return repr("The status has returned code 3, the bot is missing")
 
 
 class Pandorabot:
